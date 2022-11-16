@@ -1,0 +1,2 @@
+class DeclSeq:
+    pass

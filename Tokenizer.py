@@ -27,7 +27,7 @@ class Tokenizer:
         self.start = 0
         self.tokenID = 0
         self.tokenList = []
-        genTokenList(inputFile)
+        self.genTokenList()
 
     # Returns the first valid token, start at index start up to either the next token or whitespace, start < len(line)
     # The starting character cannot be whitespace or empty
@@ -95,6 +95,25 @@ class Tokenizer:
                 handleBadToken(self.token)
         return self.token
 
+    # Generates array of tokens from inputFile and stores them in tokenList of tokenizer
+    def genTokenList(self):
+
+        self.line = self.f.readline()
+        while self.line:
+            self.start = 0
+            self.start += skipWhitespace(self.line, self.start)
+            while self.start < len(self.line):
+                self.getToken()
+                self.tokenList.append([self.token, self.tokenID])
+
+                self.skipToken()
+
+            self.line = self.f.readline()
+        self.tokenList.append(["EOF", EOF])
+
+        # Closes file
+        self.f.close()
+
 
 # Returns length of first whitespace in line starting at start and ending at first non whitespace character in line
 def skipWhitespace(line, start):
@@ -120,24 +139,4 @@ def handleBadToken(token):
     exit(1)
 
 
-# Generates array of tokens from inputFile and stores them in tokenList of tokenizer
-def genTokenList(inputFile):
-    # Creates tokenizer, opens file and reads from it for the tokenizer, file must be a valid file to read from
-    tokenizer = Tokenizer(inputFile)
-
-    tokenizer.line = tokenizer.f.readline()
-    while tokenizer.line:
-        tokenizer.start = 0
-        tokenizer.start += skipWhitespace(tokenizer.line, tokenizer.start)
-        while tokenizer.start < len(tokenizer.line):
-            tokenizer.getToken()
-            tokenizer.tokenList.append(tokenizer.tokenID)
-
-            tokenizer.skipToken()
-
-        tokenizer.line = tokenizer.f.readline()
-    tokenizer.tokenList.append(EOF)
-
-    # Closes file
-    tokenizer.f.close()
 
