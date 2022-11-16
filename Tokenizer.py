@@ -26,6 +26,8 @@ class Tokenizer:
         self.line = ""
         self.start = 0
         self.tokenID = 0
+        self.tokenList = []
+        genTokenList(inputFile)
 
     # Returns the first valid token, start at index start up to either the next token or whitespace, start < len(line)
     # The starting character cannot be whitespace or empty
@@ -118,9 +120,8 @@ def handleBadToken(token):
     exit(1)
 
 
-# Generates array of tokens from inputFile
+# Generates array of tokens from inputFile and stores them in tokenList of tokenizer
 def genTokenList(inputFile):
-    tokenList = []
     # Creates tokenizer, opens file and reads from it for the tokenizer, file must be a valid file to read from
     tokenizer = Tokenizer(inputFile)
 
@@ -130,14 +131,13 @@ def genTokenList(inputFile):
         tokenizer.start += skipWhitespace(tokenizer.line, tokenizer.start)
         while tokenizer.start < len(tokenizer.line):
             tokenizer.getToken()
-            tokenList.append(tokenizer.tokenID)
+            tokenizer.tokenList.append(tokenizer.tokenID)
 
             tokenizer.skipToken()
 
         tokenizer.line = tokenizer.f.readline()
-    tokenList.append(EOF)
+    tokenizer.tokenList.append(EOF)
 
     # Closes file
     tokenizer.f.close()
 
-    return tokenList
