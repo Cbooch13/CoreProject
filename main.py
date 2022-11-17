@@ -10,6 +10,7 @@ def main():
     # Gets tokens from tokenizer
     inputFile = sys.argv[1]
     Interpreter.tokenList = TokenList.TokenList(inputFile)
+    Interpreter.tokenList.printString()
 
 
 # Press the green button in the gutter to run the script.

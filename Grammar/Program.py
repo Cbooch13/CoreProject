@@ -10,6 +10,7 @@ class Program:
         self.declSeq = None
         self.stmtSeq = None
 
+    # Parses program
     def Parse(self):
         #Program keyword and declaration sequence
         Interpreter.tokenList.skipToken()
@@ -24,7 +25,15 @@ class Program:
         #End keyword
         Interpreter.tokenList.skipToken()
 
+    # Prints program
     def Print(self):
+        print("program")
+        self.declSeq.Print()
+        print("begin")
+        self.stmtSeq.Print()
+        print(" end")
 
-
+    # Executes Program
     def Execute(self):
+        self.declSeq.Execute()
+        self.stmtSeq.Execute()
