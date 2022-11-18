@@ -1,4 +1,24 @@
-from Stmt import Stmt
+from Grammar.IDList import IDList
+from Interpreter import Interpreter
 
-class In(Stmt):
-    pass
+
+class In:
+
+    def __init__(self):
+        self.idList = None
+
+    def Parse(self):
+        # Parses read, idList, and semicolon
+        Interpreter.tokenList.skipToken()
+        self.idList = IDList()
+        self.idList.Parse()
+        Interpreter.tokenList.skipToken()
+
+    def Print(self, indent):
+        print(indent + "read ", end="")
+        self.idList.Print(indent)
+        print(";")
+
+    def Execute(self):
+        pass
+        #TODO idk wtf to do here

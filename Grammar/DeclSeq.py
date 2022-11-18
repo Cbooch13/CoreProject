@@ -1,10 +1,9 @@
-import TokenList
 from Grammar.Decl import Decl
-from main import Interpreter
+from Interpreter import Interpreter
 from TokenList import tokenDict
 
 
-#Decl seq symbol class
+# Decl seq symbol class
 class DeclSeq:
 
     def __init__(self):
@@ -15,21 +14,19 @@ class DeclSeq:
     def Parse(self):
         self.decl = Decl()
         self.decl.Parse()
-        #Checks if declSeq is over
-        if Interpreter.tokenList.getTokenID() == TokenList.tokenDict["begin"]:
+        # Checks if declSeq is over
+        if Interpreter.tokenList.getTokenID() == tokenDict["begin"]:
             return
 
-        #Parses second declSeq
+        # Parses second declSeq
         self.declSeq = DeclSeq()
         self.declSeq.Parse()
 
-
     # Prints decl seq
-    def Print(self):
-        self.decl.Print()
+    def Print(self, indent):
+        self.decl.Print(indent)
         if self.declSeq:
-            self.declSeq.Print()
-
+            self.declSeq.Print(indent)
 
     # Executes decl seq
     def Execute(self):

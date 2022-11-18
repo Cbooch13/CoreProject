@@ -1,27 +1,14 @@
 from Grammar.Cond import Cond
 from Grammar.StmtSeq import StmtSeq
-from Stmt import Stmt
-from main import Interpreter
+from Interpreter import Interpreter
 
 
-class Loop(Stmt):
+# Loop symbol class
+class Loop:
 
     def __init__(self):
         self.c = None
         self.ss = None
-
-    def Print(self):
-        print("while")
-        self.c.Print()
-        print("loop")
-        self.ss.Print()
-        print("end;");
-
-    def Execute(self):
-        while self.c.evalCond():
-            self.ss.Execute()
-
-        return
 
     def Parse(self):
         # Cond statement
@@ -37,4 +24,14 @@ class Loop(Stmt):
         # End statement
         Interpreter.tokenList.skipToken()
         Interpreter.tokenList.skipToken()
-        return
+
+    def Print(self, indent):
+        print(indent + "while ", end="")
+        self.c.Print(indent + "\t")
+        print(" loop")
+        self.ss.Print(indent + "\t")
+        print(indent + "end;")
+
+    def Execute(self):
+        while self.c.evalCond():
+            self.ss.Execute()

@@ -1,47 +1,40 @@
-from abc import ABC, abstractmethod
-
 from Grammar.Assign import Assign
 from Grammar.In import In
 from Grammar.Loop import Loop
 from Grammar.Out import Out
 from Grammar.If import If
-from main import Interpreter
+from Interpreter import Interpreter
 
 
 # Statement class
-class Stmt(ABC):
+from TokenList import tokenDict
+
+
+class Stmt:
 
     def __init__(self):
         self.st = None
 
-    @abstractmethod
-    def Print(self):
-        self.st.Print()
+    def Print(self, indent):
+        self.st.Print(indent)
 
-    @abstractmethod
     def Execute(self):
         self.st.Execute()
 
-    @abstractmethod
     def Parse(self):
-        self.parseSt()
-
-    def parseSt(self):
-
         # Determines alternative
         currToken = Interpreter.tokenList.getTokenID()
-        if currToken == 7:  # Assign
+        if currToken == tokenDict["identifier"]:  # Assign
             self.st = Assign()
-        elif currToken == 8:  # If
+        elif currToken == tokenDict["if"]:  # If
             self.st = If()
-        elif currToken == 9:  # Loop
+        elif currToken == tokenDict["while"]:  # Loop
             self.st = Loop()
-        elif currToken == 10:  # In
+        elif currToken == tokenDict["read"]:  # In
             self.st = In()
-        elif currToken == 11:  # Out
+        elif currToken == tokenDict["write"]:  # Out
             self.st = Out()
-        else:  # Other
-            print("Unknown Alternative of Statement")
 
         # Parse statement
         self.st.Parse()
+

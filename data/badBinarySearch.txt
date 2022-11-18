@@ -1,0 +1,26 @@
+program int NUM, LOW; int MID, HIGH;
+
+begin LOW=1; HIGH=100; read NUM;
+
+while (LOW < HIGH) loop
+
+MID = LOW;
+while(((MID+1) * 2) < HIGH) loop
+
+MID = MID+1;
+end;
+
+
+if(MID == NUM) then write NUM; LOW = HIGH+1;end;
+
+if(MID > NUM) then
+HIGH = MID-1;
+else
+LOW = MID+1;
+
+end;
+
+end ;
+
+
+end
