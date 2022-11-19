@@ -4,7 +4,6 @@ from Interpreter import Interpreter
 
 
 # Comp symbol class
-from TokenList import tokenDict
 
 
 class Comp:

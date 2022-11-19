@@ -4,7 +4,7 @@ Author: Caleb Bucci (.54)
 
 
 
-Inluded Files:
+Included Files:
 
 -Test Files: All under the data folder
   -badBinarySearch.txt
@@ -49,7 +49,7 @@ Inluded Files:
 
 
 Special Considerations/Instructions to Run Code:
-  -Make sure that all of the test files stay in the data folder, and all grammar files stay in the grammar folder
+  -Make sure that all the test files stay in the data folder, and all grammar files stay in the grammar folder
   -When running the program, make sure you are in the directory of the project and run this command:
     python3 ./main.py {testFile.txt} {testData.txt}
   -The testFile.txt contains the core program, and the testData.txt contains the data for the program

@@ -1,0 +1,13 @@
+I ran test.py which used various test files from the data folder
+in order to test my code
+
+The TokenList class wraps around the Tokenizer class in order for
+easier use
+
+All grammar symbol files have a parse, print, and execute
+
+The interpreter class contains my tokenList, which is an array of
+tokens that I gave every symbol class access to
+
+The main file creates the tokenList, as well as the program
+object to be parsed, printed, and executed
