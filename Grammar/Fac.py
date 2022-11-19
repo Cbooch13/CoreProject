@@ -25,4 +25,12 @@ class Fac:
             self.fac.Print(indent)
 
     def Execute(self):
-        pass
+        # Executes op and returns it if fac is Null
+        leftOp = self.op.Execute()
+        if not self.fac:
+            return leftOp
+
+        # Executes op * fac
+        rightFac = self.fac.Execute()
+        return leftOp * rightFac
+

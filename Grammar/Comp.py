@@ -4,6 +4,9 @@ from Interpreter import Interpreter
 
 
 # Comp symbol class
+from TokenList import tokenDict
+
+
 class Comp:
 
     def __init__(self):
@@ -30,4 +33,30 @@ class Comp:
         print(")", end="")
 
     def Execute(self):
-        pass
+        # Gets values of ops and compOp
+        op1 = self.op1.Execute()
+        compVal = self.compOp.Execute()
+        op2 = self.op2.Execute()
+        retVal = None
+
+        # Calculates comp and returns value
+        if compVal == "!=":
+            retVal = op1 != op2
+        elif compVal == "==":
+            retVal = op1 == op2
+        elif compVal == "<":
+            retVal = op1 < op2
+        elif compVal == ">":
+            retVal = op1 > op2
+        elif compVal == "<=":
+            retVal = op1 <= op2
+        elif compVal == ">=":
+            retVal = op1 >= op2
+        else:  # Error
+
+            print("Error executing compare")
+            self.Print("")
+            exit(-1)
+        return retVal
+
+

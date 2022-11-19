@@ -29,5 +29,5 @@ class Assign:
         print(";")
 
     def Execute(self):
-        pass
-        # TODO
+        # Set id val to exp val
+        self.id.setIDVal(self.exp.Execute())

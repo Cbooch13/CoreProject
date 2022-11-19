@@ -1,11 +1,11 @@
 from Interpreter import Interpreter
 
 
-def isInt(num):
+def isValidInt(num):
 
     try:
-        int(num)
-        return True
+        temp = int(num)
+        return temp >= 0
 
     except ValueError:
         return False

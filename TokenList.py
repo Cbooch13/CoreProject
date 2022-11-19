@@ -11,8 +11,9 @@ tokenDict = {
 # Class is given a token list and allows manipulation of tokens, tokenList has multiple dimensions, ex: [["A", 32]]
 class TokenList:
 
-    def __init__(self, inputFile):
+    def __init__(self, inputFile, inputData):
         self.tokenizer = Tokenizer.Tokenizer(inputFile)
+        self.data = open(inputData, "r")
         self.tokenList = self.tokenizer.tokenList
         self.tokenIdx = 0
         self.currToken = self
@@ -46,6 +47,15 @@ class TokenList:
             Tokenizer.handleBadToken(self.getTokenString())
 
         return retInt
+
+    # Reads from input data and returns int
+    def getDataLine(self):
+        line = self.data.readline().strip()
+        if line:
+            return int(line)
+        else:
+            print("Error reading from input data")
+            exit(-1)
 
     # Prints list of token ids
     def printID(self):

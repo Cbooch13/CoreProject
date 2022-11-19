@@ -33,5 +33,5 @@ class Loop:
         print(indent + "end;")
 
     def Execute(self):
-        while self.c.evalCond():
+        while self.c.Execute():
             self.ss.Execute()

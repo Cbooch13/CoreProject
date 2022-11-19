@@ -36,4 +36,14 @@ class Exp:
             self.exp.Print(indent)
 
     def Execute(self):
-        pass
+        # Executes fac and returns it if exp is Null
+        leftFac = self.fac.Execute()
+        if not self.exp:
+            return leftFac
+
+        rightExp = self.exp.Execute()
+        if self.isAdding:
+            return leftFac + rightExp  # Fac + Exp
+        else:
+            return leftFac - rightExp  # Fac - Exp
+

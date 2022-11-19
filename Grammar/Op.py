@@ -37,4 +37,13 @@ class Op:
             self.altOp.Print(indent)
 
     def Execute(self):
-        pass
+        if self.altNo == 1:  # (Exp)
+            return self.altOp.Execute()
+        elif self.altNo == 2:  # Int
+            return self.altOp.Execute()
+        elif self.altNo == 3:  # ID
+            return self.altOp.getIDVal()
+            # TODO
+        else:  # Error
+            print("Error executing operator")
+            exit(-1)

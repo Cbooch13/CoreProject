@@ -7,13 +7,13 @@ from Interpreter import Interpreter
 def main():
     # Gets tokens from tokenizer
     inputFile = sys.argv[1]
-    Interpreter.tokenList = TokenList.TokenList(inputFile)
-    Interpreter.tokenList.printString()
+    inputData = sys.argv[2]
+    Interpreter.tokenList = TokenList.TokenList(inputFile, inputData)
 
     program = Program()
     program.Parse()
-    program.Print("\t")
-    # program.Execute()
+    program.Print("")
+    program.Execute()
 
 
 # Press the green button in the gutter to run the script.

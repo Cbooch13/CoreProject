@@ -25,7 +25,15 @@ class IDList:
             self.idList.Print(indent)
 
     def Execute(self):
-        self.id.Execute()
-        if self.idList:
-            self.idList.Execute()
+        pass #TODO
+
+    #Set the value of the id
+    def setIdValues(self, init):
+        # Handles if the variable needs to be initialized
+        if init:
+            val = Interpreter.tokenList.getDataLine()
+            self.id.setIDVal(val)
+        else:  # Handles if the variable has been initialized and needs to be changed
+            self.id.setIDVal()
+
 

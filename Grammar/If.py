@@ -47,7 +47,7 @@ class If:
         print(indent + "end;")
 
     def Execute(self):
-        if self.c.evalCond():
+        if self.c.Execute():
             self.ss1.Execute()
         elif self.ss2:  # Else statement exists
             self.ss2.Execute()

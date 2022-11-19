@@ -58,10 +58,14 @@ class Cond:
 
     def Execute(self):
         if self.altNo == 1:  # Comp
-            self.comp.Execute()
+            return self.comp.Execute()
         elif self.altNo == 2:  # !Cond
-            pass
+            return not self.cond1.Execute()
         elif self.altNo == 3:  # [Cond && Cond]
-            pass
+            return self.cond1.Execute() and self.cond2.Execute()
         elif self.altNo == 4:  # [Cond || Cond]
-            pass
+            return self.cond1.Execute() or self.cond2.Execute()
+        else:
+            print("Error executing condition")
+            exit(-1)
+
