@@ -40,3 +40,10 @@ class IDList:
         print(self.id.getIDVal())
         if self.idList:
             self.idList.writeIDValues()
+
+    # Declares IDs
+    def declareIDs(self):
+        self.id.isDecl = True
+        if self.idList:
+            self.idList.declareIDs()
+

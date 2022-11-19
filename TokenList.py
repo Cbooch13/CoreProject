@@ -57,6 +57,12 @@ class TokenList:
             print("Error reading from input data")
             exit(-1)
 
+    # Checks that the next token is equal to token, otherwise exits program with appropriate message
+    def checkToken(self, token):
+        if self.tokenList.getTokenID() != tokenDict[token]:
+            print("Error: Expecting " + token + " but got " + self.tokenList.getTokenID())
+            exit(-1)
+
     # Prints list of token ids
     def printID(self):
         print("[", end="")

@@ -21,9 +21,6 @@ class ID:
             if eId.name == self.name:
                 return eId
 
-        # Declares id
-        self.isDecl = True
-
         # Adds id to eIDs
         self.eIDs.append(self)
 
