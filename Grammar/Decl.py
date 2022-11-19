@@ -24,5 +24,5 @@ class Decl:
 
     # Executes decl symbol
     def Execute(self):
-        self.idList.Execute()
+        pass
 

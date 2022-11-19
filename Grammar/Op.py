@@ -26,7 +26,7 @@ class Op:
         else:  # ID
             self.altNo = 3
             self.altOp = ID()
-            self.altOp.Parse()
+            self.altOp = self.altOp.Parse()
 
     def Print(self, indent):
         if self.altNo == 1:

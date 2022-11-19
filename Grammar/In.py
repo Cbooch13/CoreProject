@@ -20,4 +20,4 @@ class In:
         print(";")
 
     def Execute(self):
-        self.idList.setIdValues(True)
+        self.idList.setIdValues()

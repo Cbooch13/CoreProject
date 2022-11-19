@@ -12,7 +12,7 @@ class IDList:
 
     def Parse(self):
         self.id = ID()
-        self.id.Parse()
+        self.id = self.id.Parse()
         if Interpreter.tokenList.getTokenID() == tokenDict[","]:
             Interpreter.tokenList.skipToken()
             self.idList = IDList()
@@ -25,15 +25,18 @@ class IDList:
             self.idList.Print(indent)
 
     def Execute(self):
-        pass #TODO
+        pass
 
-    #Set the value of the id
-    def setIdValues(self, init):
-        # Handles if the variable needs to be initialized
-        if init:
-            val = Interpreter.tokenList.getDataLine()
-            self.id.setIDVal(val)
-        else:  # Handles if the variable has been initialized and needs to be changed
-            self.id.setIDVal()
+    # Set the value of the id
+    def setIdValues(self):
+        self.id.setIDVal(Interpreter.tokenList.getDataLine())
+        if self.idList:
+            self.idList.setIdValues()
 
-
+    # Writes values out to standard output
+    def writeIDValues(self):
+        self.id.Print("")
+        print(" = ", end="")
+        print(self.id.getIDVal())
+        if self.idList:
+            self.idList.writeIDValues()

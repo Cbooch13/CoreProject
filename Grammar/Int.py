@@ -24,6 +24,6 @@ class Int:
         print(self.int, end="")
 
     def Execute(self):
-        return self.int
+        return int(self.int)
 
 

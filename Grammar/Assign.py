@@ -13,7 +13,7 @@ class Assign:
     def Parse(self):
         # Parse id and equals sign
         self.id = ID()
-        self.id.Parse()
+        self.id = self.id.Parse()
         Interpreter.tokenList.skipToken()
 
         # Parse exp and semicolon

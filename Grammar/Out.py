@@ -20,5 +20,4 @@ class Out:
         print(";")
 
     def Execute(self):
-        pass
-        # TODO idk wtf to do here
+        self.idList.writeIDValues()

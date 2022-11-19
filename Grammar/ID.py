@@ -3,7 +3,7 @@ from Interpreter import Interpreter
 
 # ID symbol class
 class ID:
-    # List of declared IDs
+    # List of existing IDs
     eIDs = []
 
     def __init__(self):
@@ -16,10 +16,18 @@ class ID:
         self.name = Interpreter.tokenList.getTokenString()
         Interpreter.tokenList.skipToken()
 
+        # Returns existing ID if already exists
+        for eId in self.eIDs:
+            if eId.name == self.name:
+                return eId
+
+        # Declares id
+        self.isDecl = True
+
         # Adds id to eIDs
-        if self not in self.eIDs:
-            self.eIDs.append(self)
-            self.isDecl = True
+        self.eIDs.append(self)
+
+        return self
 
     def Print(self, indent):
         print(self.name, end="")
@@ -34,7 +42,7 @@ class ID:
             print("Error: " + self.name + " has not been initialized")
             exit(-1)
 
-        return self.val
+        return int(self.val)
 
     # Gets name of id object
     def setIDVal(self, value):
