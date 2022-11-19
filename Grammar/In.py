@@ -9,9 +9,11 @@ class In:
 
     def Parse(self):
         # Parses read, idList, and semicolon
+        Interpreter.tokenList.checkToken("read")
         Interpreter.tokenList.skipToken()
         self.idList = IDList()
         self.idList.Parse()
+        Interpreter.tokenList.checkToken(";")
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):

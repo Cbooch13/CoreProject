@@ -59,8 +59,8 @@ class TokenList:
 
     # Checks that the next token is equal to token, otherwise exits program with appropriate message
     def checkToken(self, token):
-        if self.tokenList.getTokenID() != tokenDict[token]:
-            print("Error: Expecting " + token + " but got " + self.tokenList.getTokenID())
+        if self.getTokenID() != tokenDict[token]:
+            print("Error: Expecting " + token + " but got " + self.getTokenString())
             exit(-1)
 
     # Prints list of token ids

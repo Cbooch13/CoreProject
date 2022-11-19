@@ -12,17 +12,21 @@ class Loop:
 
     def Parse(self):
         # Cond statement
+        Interpreter.tokenList.checkToken("while")
         Interpreter.tokenList.skipToken()
         self.c = Cond()
         self.c.Parse()
 
         # Loop statement
+        Interpreter.tokenList.checkToken("loop")
         Interpreter.tokenList.skipToken()
         self.ss = StmtSeq()
         self.ss.Parse()
 
         # End statement
+        Interpreter.tokenList.checkToken("end")
         Interpreter.tokenList.skipToken()
+        Interpreter.tokenList.checkToken(";")
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):

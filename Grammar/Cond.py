@@ -24,17 +24,24 @@ class Cond:
             self.cond1 = Cond()
             self.cond1.Parse()
         else:
+            Interpreter.tokenList.checkToken("[")
             Interpreter.tokenList.skipToken()
             self.cond1 = Cond()
             self.cond1.Parse()
             currToken = Interpreter.tokenList.getTokenID()
             if currToken == tokenDict["&&"]:  # [Cond && Cond]
                 self.altNo = 3
-            else:  # [Cond || Cond]
+            elif currToken == tokenDict["||"]:  # [Cond || Cond]
                 self.altNo = 4
+            else:  # Error
+                print("Expected a conditional operator but got " + tokenDict[currToken])
+                exit(-1)
+
+            # Parses conditional operator, cond2, and brackets
             Interpreter.tokenList.skipToken()
             self.cond2 = Cond()
             self.cond2.Parse()
+            Interpreter.tokenList.checkToken("]")
             Interpreter.tokenList.skipToken()
 
     def Print(self, indent):

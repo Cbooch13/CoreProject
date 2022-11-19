@@ -14,6 +14,7 @@ class ID:
 
     def Parse(self):
         self.name = Interpreter.tokenList.getTokenString()
+        Interpreter.tokenList.checkToken("identifier")
         Interpreter.tokenList.skipToken()
 
         # Returns existing ID if already exists

@@ -18,6 +18,7 @@ class Op:
             self.altNo = 1
             self.altOp = Exp()
             self.altOp.Parse()
+            Interpreter.tokenList.checkToken(")")
             Interpreter.tokenList.skipToken()
         elif currToken == tokenDict["integer"]:  # Int
             self.altNo = 2

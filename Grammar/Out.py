@@ -8,10 +8,12 @@ class Out:
         self.idList = None
 
     def Parse(self):
-        # Parses read, idList, and semicolon
+        # Parses write, idList, and semicolon
+        Interpreter.tokenList.checkToken("write")
         Interpreter.tokenList.skipToken()
         self.idList = IDList()
         self.idList.Parse()
+        Interpreter.tokenList.checkToken(";")
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):

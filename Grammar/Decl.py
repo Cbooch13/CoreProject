@@ -11,9 +11,11 @@ class Decl:
     # Parses decl symbol
     def Parse(self):
         # Skips int and parses id list, then skips semicolon
+        Interpreter.tokenList.checkToken("int")
         Interpreter.tokenList.skipToken()
         self.idList = IDList()
         self.idList.Parse()
+        Interpreter.tokenList.checkToken(";")
         Interpreter.tokenList.skipToken()
 
     # Prints decl symbol

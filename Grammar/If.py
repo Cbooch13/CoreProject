@@ -13,27 +13,33 @@ class If:
 
     def Parse(self):
         # Cond statement
+        Interpreter.tokenList.checkToken("if")
         Interpreter.tokenList.skipToken()
         self.c = Cond()
         self.c.Parse()
 
         # Then statement
+        Interpreter.tokenList.checkToken("then")
         Interpreter.tokenList.skipToken()
         self.ss1 = StmtSeq()
         self.ss1.Parse()
         # Checks if else statement exists or not
         if Interpreter.tokenList.getTokenID() == tokenDict["end"]:
             Interpreter.tokenList.skipToken()
+            Interpreter.tokenList.checkToken(";")
             Interpreter.tokenList.skipToken()
             return
 
         # Else Statement
+        Interpreter.tokenList.checkToken("else")
         Interpreter.tokenList.skipToken()
         self.ss2 = StmtSeq()
         self.ss2.Parse()
 
         # End statement
+        Interpreter.tokenList.checkToken("end")
         Interpreter.tokenList.skipToken()
+        Interpreter.tokenList.checkToken(";")
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):

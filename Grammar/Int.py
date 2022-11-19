@@ -18,6 +18,7 @@ class Int:
 
     def Parse(self):
         self.int = Interpreter.tokenList.getTokenString()
+        Interpreter.tokenList.checkToken("integer")
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):

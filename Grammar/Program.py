@@ -13,16 +13,19 @@ class Program:
     # Parses program
     def Parse(self):
         # Program keyword and declaration sequence
+        Interpreter.tokenList.checkToken("program")
         Interpreter.tokenList.skipToken()
         self.declSeq = DeclSeq()
         self.declSeq.Parse()
 
         # Begin keyword and statement sequence
+        Interpreter.tokenList.checkToken("begin")
         Interpreter.tokenList.skipToken()
         self.stmtSeq = StmtSeq()
         self.stmtSeq.Parse()
 
         # End keyword
+        Interpreter.tokenList.checkToken("end")
         Interpreter.tokenList.skipToken()
 
     # Prints program

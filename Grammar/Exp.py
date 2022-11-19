@@ -11,16 +11,17 @@ class Exp:
         self.isAdding = None
 
     def Parse(self):
+        # Parses fac
         from Grammar.Fac import Fac
         self.fac = Fac()
         self.fac.Parse()
-        if Interpreter.tokenList.getTokenID() == tokenDict["+"]:  # Fac + Exp
+        currToken = Interpreter.tokenList.getTokenID()
+        if currToken == tokenDict["+"]:  # Fac + Exp
             self.isAdding = True
             Interpreter.tokenList.skipToken()
             self.exp = Exp()
             self.exp.Parse()
-
-        elif Interpreter.tokenList.getTokenID() == tokenDict["-"]:  # Fac - Exp
+        elif currToken == tokenDict["-"]:  # Fac - Exp
             self.isAdding = False
             Interpreter.tokenList.skipToken()
             self.exp = Exp()

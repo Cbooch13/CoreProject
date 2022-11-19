@@ -30,6 +30,9 @@ class CompOp:
         elif currToken == tokenDict[">="]:
             self.altNo = 6
             self.compOp = ">="
+        else:  # Error
+            print("Expected a comparative operator but got " + tokenDict[currToken])
+            exit(-1)
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):

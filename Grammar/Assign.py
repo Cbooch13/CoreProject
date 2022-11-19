@@ -14,11 +14,13 @@ class Assign:
         # Parse id and equals sign
         self.id = ID()
         self.id = self.id.Parse()
+        Interpreter.tokenList.checkToken("=")
         Interpreter.tokenList.skipToken()
 
         # Parse exp and semicolon
         self.exp = Exp()
         self.exp.Parse()
+        Interpreter.tokenList.checkToken(";")
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):
@@ -31,3 +33,5 @@ class Assign:
     def Execute(self):
         # Set id val to exp val
         self.id.setIDVal(self.exp.Execute())
+
+

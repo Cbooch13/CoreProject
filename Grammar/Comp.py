@@ -15,14 +15,20 @@ class Comp:
         self.op2 = None
 
     def Parse(self):
-        # Skips parenthesis and parses symbols
+        # Skips parenthesis and parses op1
+        Interpreter.tokenList.checkToken("(")
         Interpreter.tokenList.skipToken()
         self.op1 = Op()
         self.op1.Parse()
+
+        # Parses compOp
         self.compOp = CompOp()
         self.compOp.Parse()
+
+        # Parses op 2 and parenthesis
         self.op2 = Op()
         self.op2.Parse()
+        Interpreter.tokenList.checkToken(")")
         Interpreter.tokenList.skipToken()
 
     def Print(self, indent):
@@ -58,5 +64,6 @@ class Comp:
             self.Print("")
             exit(-1)
         return retVal
+
 
 
